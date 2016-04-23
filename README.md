@@ -14,17 +14,27 @@ The following options are available:
 
 
 
-## Notes
-omxplayer saxophone/videos/noise.mov --loop --layer 1   --no-osd --no-keys
-omxplayer test.mkv --loop --layer 2  -o hdmi  --no-osd --no-keys
+## OMX
+kill all:
+
+    sudo killall -9 omxplayer.bin
+
+
+play directly:
+
+    omxplayer saxophone/videos/noise.mov --loop --layer 1   --no-osd --no-keys
+    omxplayer test.mkv --loop --layer 2  --no-osd --no-keys
 
 
 
+some packages:
 
 https://www.npmjs.com/package/omxdirector  // only one instance
 https://www.npmjs.com/package/node-omxplayer // new source, new node
 https://www.npmjs.com/package/omx-controller // many instances
 
+
+## RPIO
 
 pins 11 and 17
 
