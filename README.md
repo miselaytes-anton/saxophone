@@ -15,7 +15,7 @@ The following options are available:
 
 
 ## Notes
-omxplayer noise.mov --loop --layer 1 -o hdmi  --no-osd --no-keys
+omxplayer saxophone/videos/noise.mov --loop --layer 1   --no-osd --no-keys
 omxplayer test.mkv --loop --layer 2  -o hdmi  --no-osd --no-keys
 
 
