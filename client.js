@@ -48,6 +48,8 @@ reconnect(function(conn){
             Video.quit();
         }
         console.log('> switching video, because num changed to %s', numCallers);
+        console.log('phone is ', phone.isOn? 'on': 'off')
+
     });
 
     remoteEmitter.on('error', function(err){
