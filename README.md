@@ -42,3 +42,11 @@ pins 11 and 17
 rpio example:
 https://github.com/jperkin/node-rpio/blob/master/examples/button.js
 
+
+
+## Start client/server on boot
+
+    sudo -u pi /usr/local/bin/pm2 start /home/pi/Desktop/saxophone/pm2/client.json
+    
+    sudo -u pi /usr/local/bin/pm2 start /home/pi/Desktop/saxophone/pm2/server.json
+
