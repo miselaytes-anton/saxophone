@@ -4,7 +4,7 @@
     
 ## Client
     
-    node client
+    node client --host 192.168.1.68
     
 The following options are available:
     --host          e.g.  192.168.1.68, defaults to localhost

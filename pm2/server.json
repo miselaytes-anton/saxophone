@@ -1,5 +1,6 @@
 {
   "name" : "client",
   "script" : "server.js",
-  "cwd" : "/home/pi/Desktop/saxophone"
+  "cwd" : "/home/pi/Desktop/saxophone",
+  "interpreter": "/usr/sbin/node"
 }
