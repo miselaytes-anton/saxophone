@@ -1,8 +1,7 @@
 var DuplexEmitter = require('duplex-emitter'),
     config = require('./config'),
     Phone = require('./lib/phone'),
-    Video = require('./lib/video'),
-    video = new Video(),
+    video = require('./lib/video'),
     colors = require('colors'),
     reconnect = require('reconnect-net'),
     argv = require('minimist')(process.argv.slice(2));
