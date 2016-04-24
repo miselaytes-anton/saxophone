@@ -43,9 +43,9 @@ reconnect(function(conn){
     remoteEmitter.on('numCallersChange', function(numCallers){
         if (phone.isOn){
             var videoIndex = numCallers - 1;
-            //video.play(videoIndex);
+            video.play(videoIndex);
         } else {
-            //video.quit();
+            video.quit();
         }
         console.log('> switching video, because num changed to %s', numCallers);
         console.log('phone is ', phone.isOn? 'on': 'off')
