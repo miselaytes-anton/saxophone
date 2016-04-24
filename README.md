@@ -22,8 +22,8 @@ kill all:
 
 play directly:
 
-    omxplayer saxophone/videos/noise.mov --loop --layer 1   --no-osd --no-keys
-    omxplayer test.mkv --loop --layer 2  --no-osd --no-keys
+    omxplayer saxophone/videos/noise.mov --loop --layer 1   --no-osd
+    omxplayer wombat.h264 --loop --layer 2  --no-osd
 
 
 
