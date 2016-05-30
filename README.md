@@ -2,11 +2,14 @@
 
     node server
     
+    -v              play video
+    
 ## Client
     
     node client --host 192.168.1.68
     
 The following options are available:
+
     --host          e.g.  192.168.1.68, defaults to localhost
     -t              start client in a test mode(listens to keyboard events instead of a phone button)
     

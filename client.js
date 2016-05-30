@@ -42,8 +42,7 @@ reconnect(function(conn){
     // listening to the server sending events
     remoteEmitter.on('numCallersChange', function(numCallers){
         if (phone.isOn){
-            var videoIndex = numCallers - 1;
-            if ( !opts.isTestMode ) video.play(videoIndex);
+            if ( !opts.isTestMode ) video.play(numCallers);
         } else {
             if ( !opts.isTestMode ) video.quit();
         }

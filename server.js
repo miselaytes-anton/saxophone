@@ -3,7 +3,9 @@ var net = require('net'),
     colors = require('colors'),
     DuplexEmitter = require('duplex-emitter'),
     server = net.createServer(),
-    config = require('./config');
+    video = require('./lib/video'),
+    config = require('./config'),
+    argv = require('minimist')(process.argv.slice(2));
 
 server.on('connection', handleConnection);
 server.listen(config.port, function () {
@@ -29,9 +31,11 @@ function handleConnection(conn) {
         console.log('> client disconnected'.red);
         delete emitters[id];
         delete callers[id];
-        broadcast('numCallersChange') (_.keys(callers).length)
 
-        logStats()
+        var numCallers = _.keys(callers).length;
+        broadcast('numCallersChange') (numCallers);
+        play(numCallers);
+        logStats();
     });
 
 
@@ -39,14 +43,18 @@ function handleConnection(conn) {
     // notify the other clients that number of callers has changed
     remoteEmitter.on('end_call', function(){
         delete callers[id];
-        broadcast('numCallersChange') (_.keys(callers).length)
+        var numCallers = _.keys(callers).length;
+        broadcast('numCallersChange') (numCallers);
+        play(numCallers);
         console.log('> received end_call event'.yellow)
         logStats()
     });
 
     remoteEmitter.on('start_call', function(){
         callers[id] = true;
-        broadcast('numCallersChange') (_.keys(callers).length)
+        var numCallers = _.keys(callers).length;
+        broadcast('numCallersChange') (numCallers);
+        play(numCallers);
 
         console.log('> received start_call event'.yellow)
         logStats()
@@ -63,6 +71,7 @@ function handleConnection(conn) {
     //    console.error('Error on connection: '.red + err.message);
     //});
 
+
 }
 
 function broadcast(event) {
@@ -74,4 +83,12 @@ function broadcast(event) {
             emitter.emit.apply(emitter, args);
         });
     };
+}
+
+
+
+function play(numCallers){
+    if ( argv.v && numCallers>=0) {
+        video.play(numCallers);
+    }
 }
