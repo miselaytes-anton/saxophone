@@ -1,4 +1,4 @@
 module.exports = {
     port: 3000,
-    videoDir: '/dev/videos/'
+    videoDir: '/home/pi/videos/'
 };
