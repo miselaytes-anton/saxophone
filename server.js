@@ -7,18 +7,26 @@ var net = require('net'),
     config = require('./config'),
     argv = require('minimist')(process.argv.slice(2));
 
-server.on('connection', handleConnection);
-server.listen(config.port, function () {
-    console.log('screens server listening on %j', server.address());
-});
-
-
 
 // handle connections
 //var numCallers = 0; // number of people who picked up the phone (different from num of connected clients)
 var nextId = 0;
 var emitters = {}; //all clients
 var callers = {}; // active (those who picked up the phone)
+
+
+
+server.on('connection', handleConnection);
+server.listen(config.port, function () {
+    console.log('screens server listening on %j', server.address());
+
+    var numCallers = _.keys(callers).length;
+    play(numCallers);
+});
+
+
+
+
 function handleConnection(conn) {
     var remoteEmitter = DuplexEmitter(conn);
     var id = ++ nextId;
