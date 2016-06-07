@@ -2,7 +2,6 @@
   "name" : "client",
   "script" : "client.js",
   "args": ["--host", "192.168.1.68"],
-  "cwd" : "/home/pi/Desktop/saxophone",
-  "interpreter": "/usr/sbin/node",
-  "env": {"NODE_ENV": "foo"}
+  "cwd" : "/home/pi/saxophone",
+  "interpreter": "/usr/sbin/node"
 }
