@@ -57,3 +57,10 @@ https://github.com/jperkin/node-rpio/blob/master/examples/button.js
 ## Video
 
    ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4
+   
+   
+## Todo
+   
+   - test all videos on ALL screens, try h264 format
+   - static ip
+   - server default video layer

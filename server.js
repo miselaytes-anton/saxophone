@@ -20,8 +20,7 @@ server.on('connection', handleConnection);
 server.listen(config.port, function () {
     console.log('screens server listening on %j', server.address());
 
-    var numCallers = _.keys(callers).length;
-    play(numCallers);
+    onStateChange();
 });
 
 
@@ -40,10 +39,7 @@ function handleConnection(conn) {
         delete emitters[id];
         delete callers[id];
 
-        var numCallers = _.keys(callers).length;
-        broadcast('numCallersChange') (numCallers);
-        play(numCallers);
-        logStats();
+        onStateChange()
     });
 
 
@@ -51,27 +47,15 @@ function handleConnection(conn) {
     // notify the other clients that number of callers has changed
     remoteEmitter.on('end_call', function(){
         delete callers[id];
-        var numCallers = _.keys(callers).length;
-        broadcast('numCallersChange') (numCallers);
-        play(numCallers);
-        console.log('> received end_call event'.yellow)
-        logStats()
+
+        onStateChange();
     });
 
     remoteEmitter.on('start_call', function(){
         callers[id] = true;
-        var numCallers = _.keys(callers).length;
-        broadcast('numCallersChange') (numCallers);
-        play(numCallers);
-
-        console.log('> received start_call event'.yellow)
-        logStats()
+        onStateChange();
     });
 
-    function logStats(){
-        console.log('> num clients', _.keys(emitters).length);
-        console.log('> num callers', _.keys(callers).length, '\n');
-    }
 
     //conn.on('error', function (err) {
     //    //todo:  do deletes as well
@@ -99,4 +83,17 @@ function play(numCallers){
     if ( argv.v && numCallers>=0) {
         video.play(numCallers);
     }
+}
+
+function logStats(){
+    console.log('> num clients', _.keys(emitters).length);
+    console.log('> num callers', _.keys(callers).length, '\n');
+}
+
+function onStateChange(){
+    var numCallers = _.keys(callers).length;
+
+    logStats();
+    broadcast('numCallersChange') (numCallers);
+    play(numCallers);
 }
