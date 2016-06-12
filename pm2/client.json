@@ -1,7 +1,7 @@
 {
   "name" : "client",
   "script" : "client.js",
-  "args": ["--host", "192.168.1.68"],
+  "args": ["--host", "169.254.87.16"],
   "cwd" : "/home/pi/saxophone",
-  "interpreter": "/usr/bin/node"
+  "interpreter": "/usr/bin/nodejs"
 }
