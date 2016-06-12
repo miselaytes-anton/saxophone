@@ -48,8 +48,12 @@ https://github.com/jperkin/node-rpio/blob/master/examples/button.js
 
 
 ## Start client/server on boot
-
-    sudo -u pi /usr/local/bin/pm2 start /home/pi/Desktop/saxophone/pm2/client.json
     
-    sudo -u pi /usr/local/bin/pm2 start /home/pi/Desktop/saxophone/pm2/server.json
+    sudo su
+    echo "sudo -u pi /usr/bin/pm2 start /home/pi/saxophone/pm2/client.json" >> /etc/rc.local
+    
+    echo "sudo -u pi /usr/bin/pm2 start /home/pi/saxophone/pm2/server.json" >> /etc/rc.local
 
+## Video
+
+   ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4

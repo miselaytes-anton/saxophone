@@ -3,5 +3,5 @@
   "script" : "server.js",
   "args": ["-v"],
   "cwd" : "/home/pi/saxophone",
-  "interpreter": "/usr/sbin/node"
+  "interpreter": "/usr/bin/node"
 }
