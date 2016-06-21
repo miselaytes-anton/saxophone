@@ -13,7 +13,7 @@ var net = require('net'),
 var nextId = 0;
 var emitters = {}; //all clients
 var callers = {}; // active (those who picked up the phone)
-var lastBroadcastTime = null;
+
 
 
 server.on('connection', handleConnection);
@@ -92,22 +92,8 @@ function logStats(){
 
 function onStateChange(){
     var numCallers = _.keys(callers).length;
-    var timeout = 0;
+
     logStats();
-
-    if (now() -lastBroadcastTime <500){
-        timeout = now() -lastBroadcastTime;
-        lastBroadcastTime = now()+timeout;
-    }
-    setTimeout(function(){
-        broadcast('numCallersChange') (numCallers);
-        lastBroadcastTime = now();
-        play(numCallers);
-    }, timeout)
-
-}
-
-
-function now(){
-    return new Date().getTime();
+    broadcast('numCallersChange') (numCallers);
+    play(numCallers);
 }
