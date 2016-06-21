@@ -10,6 +10,7 @@
     "minimist": "^1.2.0",
     "omx-controller": "0.0.2",
     "reconnect-net": "^1.0.0",
-    "rpio": "^0.9.10"
+    "rpio": "^0.9.10",
+    "shelljs": "^0.7.0"
   }
 }
