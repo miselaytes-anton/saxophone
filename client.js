@@ -28,7 +28,7 @@ reconnect(function(conn){
     phone.listen();
     phone.on('end_call', function(){
         // client hanged up
-
+        video.play(0);//start 'phone ringing' video
         console.log('> end_call');
         remoteEmitter.emit('end_call'); // Notify the server (and other clients);
     });
@@ -43,9 +43,10 @@ reconnect(function(conn){
     remoteEmitter.on('numCallersChange', function(numCallers){
         if (phone.isOn){
             if ( !opts.isTestMode ) video.play(numCallers);
-        } else {
-            if ( !opts.isTestMode ) video.quit();
         }
+        //else {
+        //    if ( !opts.isTestMode ) video.quit();
+        //}
         console.log('> switching video, because num changed to %s', numCallers);
         console.log('phone is ', phone.isOn? 'on': 'off')
 
@@ -54,6 +55,8 @@ reconnect(function(conn){
     remoteEmitter.on('error', function(err){
         console.log('remoteEmitter error '.red, err)
     });
+
+    video.play(0);//start 'phone ringing' video
 
 }).on('error', function(err){
 
